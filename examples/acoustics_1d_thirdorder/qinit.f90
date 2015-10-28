@@ -6,17 +6,15 @@ subroutine qinit(meqn,mbc,mx,xlower,dx,q,maux,aux)
     ! loop over all grid cells to set values of q(1:meqn, 1:mx).
 
     implicit none
-    
+
     integer, intent(in) :: meqn,mbc,mx,maux
     real(kind=8), intent(in) :: xlower,dx
     real(kind=8), intent(in) :: aux(maux,1-mbc:mx+mbc)
     real(kind=8), intent(inout) :: q(meqn,1-mbc:mx+mbc)
 
     integer :: i
-    real(kind=8) :: beta, xcell
-    common /cqinit/ beta
- 
- 
+    real(kind=8) :: xcell
+
       do i=1,mx
          xcell = xlower + (i-0.5d0)*dx
          q(1,i) = 1.d-5*dexp(-((xcell-0.1162d0)/4.5d-4)**2)
@@ -24,4 +22,3 @@ subroutine qinit(meqn,mbc,mx,xlower,dx,q,maux,aux)
       enddo
 
 end subroutine qinit
-
