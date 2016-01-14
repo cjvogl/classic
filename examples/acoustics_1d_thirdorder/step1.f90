@@ -58,7 +58,7 @@
 !     # check if any limiters are used:
     limit = .false.
     do 5 mw=1,num_waves
-        if (mthlim(mw) > 0) limit = .TRUE. 
+        if (mthlim(mw) > 0) limit = .TRUE.
     5 END DO
 
     index_capa = method(6)
@@ -90,7 +90,7 @@
 
 
 
-          
+
 !     print *,"q before, from fortran",q(24,1)
 
     do i = 1, mx+1
@@ -143,8 +143,11 @@
                             dq2 = wave(m,mw,i+1) - wave(m,mw,i)
                         end if
 
-                        f(m,i) = f(m,i) - s(mw,i)/6.d0 * &
-                                    (1.d0 - (s(mw,i)*dtdxave)**2) * dq2
+!                        f(m,i) = f(m,i) + s(mw,i)/6.d0 * &
+!                                    (1.d0 - (s(mw,i)*dtdxave)**2) * dq2
+
+                        f(m,i) = f(m,i) + 0.5d0*s(mw,i)*(1.d0/6.d0 - &
+                                  dtdxave*dabs(s(mw,i))*(0.5d0 - dtdxave*dabs(s(mw,i))/3.d0) )*dq2
                     end if
 
                 end do

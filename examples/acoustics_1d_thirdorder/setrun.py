@@ -62,14 +62,32 @@ def setrun(claw_pkg='classic'):
     clawdata.upper[0] = 0.23          # xupper
 
     # Number of grid cells (comparing 2nd order Vanleer to 3rd order none):
-#    clawdata.num_cells[0] = 2250       # mx #4200, 2830 ... 16.0%
-                                        #    #4755, 3200 ... 4.9%
-#    clawdata.num_cells[0] = 5500       # mx #4770, 3215 ... 4.6%
-                                        #    #4980, 3355 ... 0.4%
-    clawdata.num_cells[0] = 11000      # mx #4917, 3313 ... 1.66%
+#    clawdata.num_cells[0] = 2250       # mx
+    clawdata.num_cells[0] = 5500       # mx
+#    clawdata.num_cells[0] = 11000      # mx #4917, 3313 ... 1.66%
                                         #    #5000, 3370 ... epsilon %
 #    clawdata.num_cells[0] = 22000      # mx #4970, 3350 ... 0.6%
 #    clawdata.num_cells[0] = 44000      # mx #4990, 3365 ... 0.2%
+
+##  2nd order results (Vanleer)
+#   mx  2250, 4.197, 16.0%
+#   mx  5500, 4.770,  4.6%
+#   mx 11000, 4.917,  1.7%
+
+##  2nd order results (none)
+#   mx  2250, 4.315, 13.7%
+#   mx  5500, 4.920,  1.6%
+#   mx 11000, 4.991,
+
+##  3rd order results (none)
+#   mx  2250, 4.411, 12.8%
+#   mx  5500, 4.938,  1.2%
+#   mx 11000, 4.993,  0.1%
+
+
+
+
+
 
 
     # ---------------
@@ -193,7 +211,7 @@ def setrun(claw_pkg='classic'):
     #   2 or 'superbee' ==> superbee
     #   3 or 'vanleer'  ==> van Leer
     #   4 or 'mc'       ==> MC limiter
-    clawdata.limiter = ['none', 'none']
+    clawdata.limiter = ['vanleer', 'vanleer']
 
     clawdata.use_fwaves = False    # True ==> use f-wave version of algorithms
 
