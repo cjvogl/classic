@@ -57,11 +57,11 @@ def setrun(claw_pkg='classic'):
     clawdata.lower[0] = -0.03         # xlower
     clawdata.upper[0] =  0.12          # xupper
     clawdata.lower[1] = 0.0          # ylower
-    clawdata.upper[1] = 0.15    # yupper
+    clawdata.upper[1] = 0.075    # yupper
 
     # Number of grid cells:
-    clawdata.num_cells[0] = 8448/32      # mx
-    clawdata.num_cells[1] = 8448/32     # my
+    clawdata.num_cells[0] = 1100      # mx
+    clawdata.num_cells[1] = 550     # my
 
 
     # ---------------
@@ -108,8 +108,8 @@ def setrun(claw_pkg='classic'):
     if clawdata.output_style==1:
         # Output ntimes frames at equally spaced times up to tfinal:
         # Can specify num_output_times = 0 for no output
-        clawdata.num_output_times = 49
-        clawdata.tfinal = 48.0
+        clawdata.num_output_times = 60
+        clawdata.tfinal = 60.0
         clawdata.output_t0 = True  # output at initial (or restart) time?
 
     elif clawdata.output_style == 2:
@@ -171,10 +171,10 @@ def setrun(claw_pkg='classic'):
     # ------------------
 
     # Order of accuracy:  1 => Godunov,  2 => Lax-Wendroff plus limiters
-    clawdata.order = 2
+    clawdata.order = 3
 
     # Use dimensional splitting? (not yet available for AMR)
-    clawdata.dimensional_split = 'unsplit'
+    clawdata.dimensional_split = 'godunov'
 
     # For unsplit method, transverse_waves can be
     #  0 or 'none'      ==> donor cell (only normal solver used)
@@ -194,7 +194,7 @@ def setrun(claw_pkg='classic'):
     #   2 or 'superbee' ==> superbee
     #   3 or 'vanleer'  ==> van Leer
     #   4 or 'mc'       ==> MC limiter
-    clawdata.limiter = ['vanleer','vanleer']
+    clawdata.limiter = ['none','none']
 
     clawdata.use_fwaves = False    # True ==> use f-wave version of algorithms
 

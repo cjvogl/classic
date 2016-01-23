@@ -25,7 +25,7 @@ RESTART ?= False                    # Should = clawdata.restart in setrun
 # Environment variable FC should be set to fortran compiler, e.g. gfortran
 
 # Compiler flags can be specified here or set as an environment variable
-FFLAGS ?=  
+FFLAGS ?=
 
 # ---------------------------------
 # List of sources for this program:
@@ -35,10 +35,10 @@ MODULES = \
 
 SOURCES = \
   qinit.f90 \
+	setaux.f90 \
   setprob.f90 \
   step1.f90 \
-  $(CLAW)/riemann/src/rp1_acoustics.f90 \
-  $(CLAW)/classic/src/1d/setaux.f90 \
+  $(CLAW)/riemann/src/rp1_acoustics_variable.f90 \
   $(CLAW)/classic/src/1d/bc1.f \
   $(CLAW)/classic/src/1d/b4step1.f90 \
   $(CLAW)/classic/src/1d/driver.f90 \
@@ -48,9 +48,8 @@ SOURCES = \
   $(CLAW)/classic/src/1d/inlinelimiter.f90 \
   $(CLAW)/classic/src/1d/opendatafile.f \
   $(CLAW)/classic/src/1d/out1.f \
-  $(CLAW)/classic/src/1d/src1.f90 
+  $(CLAW)/classic/src/1d/src1.f90
 
 #-------------------------------------------------------------------
 # Include Makefile containing standard definitions and make options:
 include $(CLAWMAKE)
-

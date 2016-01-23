@@ -34,6 +34,7 @@ FFLAGS ?=
 MODULES = \
 
 SOURCES = \
+	flux2.f90 \
   qinit.f \
   setprob.f \
 	src2.f90 \
@@ -48,7 +49,6 @@ SOURCES = \
   $(CLAW)/classic/src/2d/step2.f90 \
   $(CLAW)/classic/src/2d/step2ds.f90 \
   $(CLAW)/classic/src/2d/dimsp2.f \
-  $(CLAW)/classic/src/2d/flux2.f90 \
   $(CLAW)/classic/src/2d/copyq2.f \
   $(CLAW)/classic/src/2d/inlinelimiter.f90 \
   $(CLAW)/classic/src/2d/out2.f \

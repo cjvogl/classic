@@ -28,7 +28,7 @@ def setplot(plotdata):
     plotaxes = plotfigure.new_plotaxes()
     plotaxes.axescmd = 'subplot(2,1,1)'   # top figure
     plotaxes.xlimits = 'auto'
-    plotaxes.ylimits = [-1.0e-6,6.0e-6]
+    plotaxes.ylimits = [-1.0e-6,10.0e-6]
     plotaxes.title = 'Pressure'
 
     # Set up for item on these axes:

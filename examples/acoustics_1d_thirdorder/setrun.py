@@ -36,12 +36,14 @@ def setrun(claw_pkg='classic'):
     # Problem-specific parameters to be written to setprob.data:
     #------------------------------------------------------------------
     probdata = rundata.new_UserData(name='probdata', fname='setprob.data')
-    probdata.add_param('rho',  1000.0,  'density of medium')
-    probdata.add_param('K',    0.002202256,  'bulk modulus')
-    probdata.add_param('t0wall', 0.3, 'Gaussian width parameter')
-    probdata.add_param('amplitude', 1.0e-5, 'amplitude of pulse')
-
-
+    probdata.add_param('rho1',  1000.0,  'density of medium')
+    probdata.add_param('bulk1', 0.002202256,  'bulk modulus')
+#    probdata.add_param('rho2',  1000.0,  'density of medium')
+#    probdata.add_param('bulk2', 0.002202256,  'bulk modulus')
+    probdata.add_param('rho2',  7850.0,  'density of medium')
+    probdata.add_param('bulk2', 0.27884456,  'bulk modulus')
+    probdata.add_param('rho3',  1000.0,  'density of medium')
+    probdata.add_param('bulk3', 0.002202256,  'bulk modulus')
 
     #------------------------------------------------------------------
     # Standard Clawpack parameters to be written to claw.data:
@@ -98,7 +100,7 @@ def setrun(claw_pkg='classic'):
     clawdata.num_eqn = 2
 
     # Number of auxiliary variables in the aux array (initialized in setaux)
-    clawdata.num_aux = 0
+    clawdata.num_aux = 2
 
     # Index of aux array corresponding to capacity function, if there is one:
     clawdata.capa_index = 0
@@ -134,8 +136,8 @@ def setrun(claw_pkg='classic'):
     if clawdata.output_style==1:
         # Output ntimes frames at equally spaced times up to tfinal:
         # Can specify num_output_times = 0 for no output
-        clawdata.num_output_times = 50
-        clawdata.tfinal = 50.0
+        clawdata.num_output_times = 160
+        clawdata.tfinal = 160.0
         clawdata.output_t0 = True  # output at initial (or restart) time?
 
     elif clawdata.output_style == 2:
@@ -197,7 +199,7 @@ def setrun(claw_pkg='classic'):
     # ------------------
 
     # Order of accuracy:  1 => Godunov,  2 => Lax-Wendroff plus limiters
-    clawdata.order = 3
+    clawdata.order = 2
 
 
     # Number of waves in the Riemann solution:
@@ -211,7 +213,7 @@ def setrun(claw_pkg='classic'):
     #   2 or 'superbee' ==> superbee
     #   3 or 'vanleer'  ==> van Leer
     #   4 or 'mc'       ==> MC limiter
-    clawdata.limiter = ['vanleer', 'vanleer']
+    clawdata.limiter = ['none', 'none']
 
     clawdata.use_fwaves = False    # True ==> use f-wave version of algorithms
 
