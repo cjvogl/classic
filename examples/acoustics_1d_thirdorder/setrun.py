@@ -38,10 +38,10 @@ def setrun(claw_pkg='classic'):
     probdata = rundata.new_UserData(name='probdata', fname='setprob.data')
     probdata.add_param('rho1',  1000.0,  'density of medium')
     probdata.add_param('bulk1', 0.002202256,  'bulk modulus')
-#    probdata.add_param('rho2',  1000.0,  'density of medium')
-#    probdata.add_param('bulk2', 0.002202256,  'bulk modulus')
-    probdata.add_param('rho2',  7850.0,  'density of medium')
-    probdata.add_param('bulk2', 0.27884456,  'bulk modulus')
+    probdata.add_param('rho2',  1000.0,  'density of medium')
+    probdata.add_param('bulk2', 0.002202256,  'bulk modulus')
+#    probdata.add_param('rho2',  7850.0,  'density of medium')
+#    probdata.add_param('bulk2', 0.27884456,  'bulk modulus')
     probdata.add_param('rho3',  1000.0,  'density of medium')
     probdata.add_param('bulk3', 0.002202256,  'bulk modulus')
 
@@ -65,8 +65,8 @@ def setrun(claw_pkg='classic'):
 
     # Number of grid cells (comparing 2nd order Vanleer to 3rd order none):
 #    clawdata.num_cells[0] = 2250       # mx
-    clawdata.num_cells[0] = 5500       # mx
-#    clawdata.num_cells[0] = 11000      # mx #4917, 3313 ... 1.66%
+#    clawdata.num_cells[0] = 5500       # mx
+    clawdata.num_cells[0] = 11000      # mx #4917, 3313 ... 1.66%
                                         #    #5000, 3370 ... epsilon %
 #    clawdata.num_cells[0] = 22000      # mx #4970, 3350 ... 0.6%
 #    clawdata.num_cells[0] = 44000      # mx #4990, 3365 ... 0.2%
@@ -199,7 +199,7 @@ def setrun(claw_pkg='classic'):
     # ------------------
 
     # Order of accuracy:  1 => Godunov,  2 => Lax-Wendroff plus limiters
-    clawdata.order = 2
+    clawdata.order = 3
 
 
     # Number of waves in the Riemann solution:

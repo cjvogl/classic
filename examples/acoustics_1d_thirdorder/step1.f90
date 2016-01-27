@@ -143,11 +143,11 @@
                             dq2 = wave(m,mw,i+1) - wave(m,mw,i)
                         end if
 
-                        f(m,i) = f(m,i) - s(mw,i)/6.d0 * &
-                                    (1.d0 - (s(mw,i)*dtdxave)**2) * dq2
+!                        f(m,i) = f(m,i) - s(mw,i)/6.d0 * &
+!                                    (1.d0 - (s(mw,i)*dtdxave)**2) * dq2
 
-!                        f(m,i) = f(m,i) + 1.d0/6.d0*s(mw,i)*(0.75d0 - dtdxave*dabs(s(mw,i))* &
-!                                          (1.5d0 - dtdxave*dabs(s(mw,i))))*dq2
+                        f(m,i) = f(m,i) - 1.d0/6.d0*s(mw,i)*(0.75d0 - 0.25d0*dt/dtdxave -&
+                                 dabs(s(mw,i))*dtdxave*(1.5d0 - dabs(s(mw,i))*dtdxave))*dq2
                     end if
 
                 end do
