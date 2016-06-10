@@ -259,7 +259,7 @@ Makefile.html : Makefile ; $(CC2HTML) $<
 # Run the code and put fort.* files into subdirectory named output:
 # runclaw will execute setrun.py to create data files and determine
 # what executable to run, e.g. xclaw or xamr.
-.output: .output1d .output2d
+.output: .output1d; $(MAKE) .output2d;
 
 .output1d: $(EXE1D) $(SETRUN_FILE) $(SETRUN_FILE1D)
 	$(MAKE) output1d;
@@ -285,8 +285,7 @@ output2d: $(MAKEFILE_LIST);
 
 #----------------------------------------------------------------------------
 # Compute errors from _output and _output1d directories
-.errors: .output1d .output2d;
-		$(MAKE) errors;
+.errors: .output1d; $(MAKE) .output2d; $(MAKE) errors;
 
 errors: $(MAKEFILE_LIST);
 	-rm -f .errors
